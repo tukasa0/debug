@@ -6,27 +6,32 @@ using namespace std;
 
 #define D_DEBUG_ON
 
+void Init()
+{
+	answer = 0;
+	number = 0;
+}
+
 void InitRand()
 {
 	srand((unsigned int)time(NULL));
 }
 
-static void Answer()
+void Answer()
 {
 	cin >> answer;
 }
 
-static void Number()
+void Number()
 {
 	number = rand() % MAX_VALUE + 1;
-
-#ifdef D_DEBUG_OFF
+#ifdef D_DEBUG_ON
 	cout << "‘I‚Î‚ê‚½”Žš‚Í" << number << "‚Å‚·B" << endl;
 #endif
 
 }
 
-static bool Guess()
+bool Guess()
 {
 	cout << "‚ ‚È‚½‚Ì“š‚¦‚Í > " << flush;
 	Answer();
@@ -57,5 +62,7 @@ void Gamekazuate()
 	{
 
 	}
+
+	Init();
 }
 

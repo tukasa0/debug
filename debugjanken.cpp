@@ -4,7 +4,15 @@ using namespace std;
 
 #define D_DEBUG_ON
 
-static void Playerhand()
+void InitPoint()
+{
+	player = 0;
+	enemy = 0;
+	playerPoint = 0;
+	enemyPoint = 0;
+}
+
+void Playerhand()
 {
 	bool botton = true;
 
@@ -41,26 +49,26 @@ static void Playerhand()
 	cout << endl;
 }
 
-static void Enemyhand()
+void Enemyhand()
 {
 	enemy = rand() % 3;
 
-#ifdef D_DEBUG_OFF
+#ifdef D_DEBUG_ON
 	cout << "相手は" << hand[enemy] << "を出そうとしている" << endl;
 #endif
 }
 
-static void Showhand(int otherwords, int otherhand)
+void Showhand(int otherwords, int otherhand)
 {
 	cout << words[otherwords] << "は、" << hand[otherhand] << "を出しました。" << endl;
 }
 
-static void Showpoint(int otherwords, int otherpoint)
+void Showpoint(int otherwords, int otherpoint)
 {
 	cout << words[otherwords] << otherpoint << words[Points] << endl;
 }
 
-static bool Compare()
+bool Compare()
 {
 	Enemyhand();
 	Playerhand();
@@ -76,7 +84,7 @@ static bool Compare()
 		cout << words[Player] << "の勝ち!" << endl;
 		playerPoint++;
 	}
-	else
+	else if (enemy + 1 == player || enemy - 2 == player)
 	{
 		cout << words[Player] << "の負け..." << endl;
 		enemyPoint++;
@@ -108,5 +116,5 @@ void Gamejanken()
 
 	}
 
-
+	InitPoint();
 }
